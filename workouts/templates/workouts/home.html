@@ -1,0 +1,25 @@
+{% extends 'workouts/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="schedule-container">
+
+    <div class="day-grid">
+        {% for day in workout_plan %}
+        <a href="{% url 'day_detail' day.day %}" class="day-card-link">
+            <span class="day-label">{{ day.day|upper }}</span>
+            <div class="day-card" style="background-image: url('{% static 'workouts/images/'|add:day.day|add:'.jpg' %}');">
+                <div class="day-overlay">
+                    <h3>{{ day.focus }}</h3>
+                    {% if day.is_rest %}
+                        <p class="rest-tag">Rest Day</p>
+                    {% else %}
+                        <p class="sub-info">Exercises</p>
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

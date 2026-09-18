@@ -1,0 +1,26 @@
+{% extends 'workouts/base.html' %}
+
+{% block title %}Diet Plan{% endblock %}
+
+{% block content %}
+<div class="schedule-container">
+    <div class="diet-list">
+        {% for meal in diet_plan %}
+        <div class="meal-card">
+            <div class="meal-header">
+                <h3>{{ meal.meal }}</h3>
+                <span class="calories">{{ meal.calories }} kcal</span>
+            </div>
+            <ul>
+                {% for item in meal.items %}
+                <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+
+    <br>
+    <a href="{% url 'home' %}">← Back to Workout Plan</a>
+</div>
+{% endblock %}

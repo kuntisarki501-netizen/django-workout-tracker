@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Workout Tracker{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'workouts/css/style.css' %}">
+</head>
+<body>
+    {% include 'workouts/navbar.html' %}
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

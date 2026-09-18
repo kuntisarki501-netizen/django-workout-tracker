@@ -1,0 +1,27 @@
+{% extends 'workouts/base.html' %}
+
+{% block content %}
+<div class="detail-card">
+    <h1>{{ day.day }} - {{ day.focus }}</h1>
+
+    <ul>
+        {% for exercise in day.exercises %}
+        <li>{{ exercise }}</li>
+        {% endfor %}
+    </ul>
+
+    {% if day.video_id %}
+    <a href="https://www.youtube.com/watch?v={{ day.video_id }}" target="_blank" class="video-thumb-link">
+        <div class="video-wrapper">
+            <img src="https://img.youtube.com/vi/{{ day.video_id }}/hqdefault.jpg" alt="Watch video">
+            <div class="play-overlay">
+                <div class="play-circle">▶</div>
+            </div>
+        </div>
+    </a>
+    {% endif %}
+
+    <br>
+    <a href="{% url 'home' %}">← Back to Week</a>
+</div>
+{% endblock %}
